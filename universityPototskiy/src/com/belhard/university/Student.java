@@ -34,7 +34,7 @@ class Student extends Person {
             counter++;
         }
         this.averageScore = sum / counter;
-        
+        System.out.print(averageScore);
     }
 
     public void setFaculty(String faculty) {
