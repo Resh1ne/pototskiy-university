@@ -73,9 +73,7 @@ class Group {
     public void getStudents() {
         for (int i = 0; i < MAX_STUDENTS; i++) {
             if (students[i] != null) {
-                System.out.println(students[i].getId() + "\t" + students[i].getSecondName() + "\t"
-                        + students[i].getFirstName() + "\t" + students[i].getDateOfBrith() + "\t"
-                        + students[i].getFaculty() + "\t" + students[i].getSpeciality());
+                System.out.println(students[i].info());
             } else {
                 break;
             }

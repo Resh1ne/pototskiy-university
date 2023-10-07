@@ -12,6 +12,7 @@ class Student extends Person {
         setFaculty(faculty);
         setSpeciality(speciality);
         setAssessments();
+        setAverageScore();
     }
 
     private void setAssessments() {
@@ -26,15 +27,18 @@ class Student extends Person {
         }
     }
 
-    public void setAverageScore() {
+    private void setAverageScore() {
         int counter = 0;
-        int sum = 0;
+        double sum = 0;
         for (int i = 0; i < assessments.length; i++) {
             sum += assessments[i];
             counter++;
         }
-        this.averageScore = sum / counter;
-        System.out.print(averageScore);
+        averageScore = sum / counter;
+    }
+
+    public double getAverageScore() {
+        return averageScore;
     }
 
     public void setFaculty(String faculty) {
@@ -55,8 +59,7 @@ class Student extends Person {
 
     @Override
     public String info() {
-        setAverageScore();
         return getId() + "\t" + getSecondName() + "\t" + getFirstName() + "\t" + getDateOfBrith() + "\t" + getFaculty()
-                + "\t" + getSpeciality();
+                + "\t" + getSpeciality() + "\t" + getAverageScore();
     }
 }
