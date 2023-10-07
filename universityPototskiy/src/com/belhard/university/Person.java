@@ -1,14 +1,28 @@
 package com.belhard.university;
 
-class Person {
+abstract class Person {
+    private Long id;
     private String firstName;
     private String lastName;
     private String dateOfBrith;
 
-    Person(String firstName, String lastName, int day, int mounth, int year) {
+    Person(Long id, String firstName, String lastName, int day, int mounth, int year) {
+        setId(id);
         setFirstName(firstName);
         setSecondName(lastName);
         setDateOfBrith(day, mounth, year);
+    }
+
+    public void setId(Long id) {
+        if (id < 0) {
+            throw new RuntimeException("Incorrect input!");
+        } else {
+            this.id = id;
+        }
+    }
+
+    public Long getId() {
+        return id;
     }
 
     public String getFirstName() {
@@ -38,4 +52,6 @@ class Person {
     public String getDateOfBrith() {
         return dateOfBrith;
     }
+
+    abstract public String info();
 }

@@ -15,8 +15,8 @@ class Group {
         this.teacher = teacher;
     }
 
-    public void getTeacher() {
-        teacher.info();
+    public String getTeacher() {
+        return teacher.info();
     }
 
     public void setStudent(Student student) {
@@ -32,13 +32,13 @@ class Group {
         }
     }
 
-    private void checkId(int i) {
-        for (; i < MAX_STUDENTS - 1; i++) {
-            if (students[i + 1] == null) {
+    private void checkId(int temp) {
+        for (; temp < MAX_STUDENTS - 1; temp++) {
+            if (students[temp + 1] == null) {
                 break;
             } else {
-                if (students[i].getId() == students[i + 1].getId()) {
-                    this.students[i + 1].setId(students[i + 1].getId() + 1);
+                if (students[temp].getId() == students[temp + 1].getId()) {
+                    this.students[temp + 1].setId(students[temp].getId() + 1);
                 }
             }
         }
@@ -84,7 +84,7 @@ class Group {
 
     public void info() {
         getStudents();
-        getTeacher();
+        System.out.println(getTeacher());
     }
 
     public void removeStudent(Student student) {
@@ -102,5 +102,9 @@ class Group {
         }
         countStudent--;
         this.students = newStudents;
+    }
+
+    public int getSize() {
+        return this.countStudent;
     }
 }

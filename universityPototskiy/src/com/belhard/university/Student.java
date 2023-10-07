@@ -1,28 +1,40 @@
 package com.belhard.university;
 
 class Student extends Person {
-    private int id;
     private String faculty;
     private String speciality;
+    private double averageScore;
+    private Integer[] assessments = new Integer[10];
 
-    Student(String firstName, String lastName, int day, int mounth, int year, int id, String faculty,
+    Student(Long id, String firstName, String lastName, int day, int mounth, int year, String faculty,
             String speciality) {
-        super(firstName, lastName, day, mounth, year);
-        setId(id);
+        super(id, firstName, lastName, day, mounth, year);
         setFaculty(faculty);
         setSpeciality(speciality);
+        setAssessments();
     }
 
-    public void setId(int id) {
-        if (id < 0) {
-            throw new RuntimeException("Incorrect input!");
-        } else {
-            this.id = id;
+    private void setAssessments() {
+        for (int i = 0; i < assessments.length; i++) {
+            assessments[i] = ((int) (Math.random() * 11));
         }
     }
 
-    public int getId() {
-        return id;
+    public void getAssessments() {
+        for (int i = 0; i < assessments.length; i++) {
+            System.out.print(assessments[i] + "\t");
+        }
+    }
+
+    public void setAverageScore() {
+        int counter = 0;
+        int sum = 0;
+        for (int i = 0; i < assessments.length; i++) {
+            sum += assessments[i];
+            counter++;
+        }
+        this.averageScore = sum / counter;
+        System.out.print(averageScore);
     }
 
     public void setFaculty(String faculty) {
@@ -41,8 +53,10 @@ class Student extends Person {
         this.speciality = speciality;
     }
 
-    public void info() {
-        System.out.println(getId() + "\t" + getSecondName() + "\t" + getFirstName() + "\t" + getDateOfBrith() + "\t"
-                + getFaculty() + "\t" + getSpeciality());
+    @Override
+    public String info() {
+        setAverageScore();
+        return getId() + "\t" + getSecondName() + "\t" + getFirstName() + "\t" + getDateOfBrith() + "\t" + getFaculty()
+                + "\t" + getSpeciality();
     }
 }

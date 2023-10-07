@@ -1,19 +1,19 @@
 package com.belhard.university;
 
 public class Employee extends Person {
-    private int experience;
-    private int workingHours;
-    private int salary;
+    private Integer experience;
+    private Integer workingHours;
+    private Integer salary;
 
-    Employee(String firstName, String lastName, int day, int mounth, int year, int experience, int workingHours,
-            int salary) {
-        super(firstName, lastName, day, mounth, year);
+    Employee(Long id, String firstName, String lastName, int day, int mounth, int year, int experience,
+            int workingHours, int salary) {
+        super(id, firstName, lastName, day, mounth, year);
         setExperience(experience);
         setWorkigHours(workingHours);
         setSalary(salary);
     }
 
-    public void setExperience(int experience) {
+    public void setExperience(Integer experience) {
         if (experience < 0) {
             throw new RuntimeException("Incorrect input!");
         } else {
@@ -25,7 +25,7 @@ public class Employee extends Person {
         return experience;
     }
 
-    public void setWorkigHours(int workingHours) {
+    public void setWorkigHours(Integer workingHours) {
         if (workingHours < 1 || workingHours > 8) {
             throw new RuntimeException("Incorrect input!");
         } else {
@@ -37,7 +37,7 @@ public class Employee extends Person {
         return salary;
     }
 
-    public void setSalary(int salary) {
+    public void setSalary(Integer salary) {
         if (salary < 0) {
             throw new RuntimeException();
         } else {
@@ -49,9 +49,10 @@ public class Employee extends Person {
         return workingHours;
     }
 
-    public void info() {
-        System.out.println(getSecondName() + "\t" + getFirstName() + "\t" + getDateOfBrith() + "\t" + "Experience: "
+    @Override
+    public String info() {
+        return getSecondName() + "\t" + getFirstName() + "\t" + getDateOfBrith() + "\t" + "Experience: "
                 + getExperience() + " years" + "\t" + "W.Hours: " + getWorkigHours() + "\t" + "Salary: " + getSalary()
-                + "BYN");
+                + "BYN";
     }
 }
