@@ -1,5 +1,7 @@
 package com.belhard.university;
 
+import java.util.Objects;
+
 class Group {
     private static final int MAX_STUDENTS = 8;
     private Teacher teacher;
@@ -16,12 +18,22 @@ class Group {
     }
 
     public String getTeacher() {
-        return teacher.info();
+        return teacher.toString();
     }
 
     public void setStudent(Student student) {
-        this.students[countStudent] = student;
-        this.countStudent++;
+        students[countStudent] = student;
+        countStudent++;
+    }
+
+    private void checkNubmerInGrops() {
+        for (int i = 0; i < MAX_STUDENTS - 1; i++) {
+            if (students[i + 1] == null) {
+                break;
+            } else {
+                students[i + 1].setNubmerInGroups(students[i].getNumberInGroups() + 1);
+            }
+        }
     }
 
     public void addStudent(Student student) {
@@ -32,48 +44,11 @@ class Group {
         }
     }
 
-    private void checkId(int temp) {
-        for (; temp < MAX_STUDENTS - 1; temp++) {
-            if (students[temp + 1] == null) {
-                break;
-            } else {
-                if (students[temp].getId() == students[temp + 1].getId()) {
-                    this.students[temp + 1].setId(students[temp].getId() + 1);
-                }
-            }
-        }
-    }
-
-    public void sortId() {
-        boolean flag = true;
-
-        while (flag) {
-            flag = false;
-            int temp = 0;
-            checkId(temp);
-
-            for (int i = 0; i < MAX_STUDENTS - 1; i++) {
-                if (students[i + 1] == null) {
-                    break;
-                } else {
-                    if (students[i].getId() > students[i + 1].getId()) {
-                        Student tempStudent;
-
-                        tempStudent = this.students[i];
-                        this.students[i] = this.students[i + 1];
-                        this.students[i + 1] = tempStudent;
-                        flag = true;
-                        temp = i;
-                    }
-                }
-            }
-        }
-    }
-
     public void getStudents() {
+        checkNubmerInGrops();
         for (int i = 0; i < MAX_STUDENTS; i++) {
             if (students[i] != null) {
-                System.out.println(students[i].info());
+                System.out.println(students[i].toString());
             } else {
                 break;
             }
@@ -104,5 +79,27 @@ class Group {
 
     public int getSize() {
         return this.countStudent;
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(students, countStudent, teacher);
+    }
+
+    @Override
+    public boolean equals(Object obj) {
+        if (this == obj) {
+            return true;
+        }
+        if (obj == null) {
+            return false;
+        }
+        if (getClass() != obj.getClass()) {
+            return false;
+        }
+        Group other = (Group) obj;
+        return countStudent == other.countStudent//
+                && Objects.equals(teacher, other.teacher)//
+                && Objects.equals(students, other.students);
     }
 }

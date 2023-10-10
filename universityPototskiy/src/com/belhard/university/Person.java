@@ -1,5 +1,7 @@
 package com.belhard.university;
 
+import java.util.Objects;
+
 abstract class Person {
     private Long id;
     private String firstName;
@@ -53,5 +55,28 @@ abstract class Person {
         return dateOfBrith;
     }
 
-    abstract public String info();
+    abstract public void introduceYourself();
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(id, dateOfBrith, firstName, lastName);
+    }
+    
+    @Override
+    public boolean equals(Object obj) {
+        if (this == obj) {
+            return true;
+        }
+        if (obj == null) {
+            return false;
+        }
+        if (getClass() != obj.getClass()) {
+            return false;
+        }
+        Person other = (Person) obj;
+        return id == other.id//
+                && Objects.equals(dateOfBrith, other.dateOfBrith)//
+                && Objects.equals(firstName, other.firstName)//
+                && Objects.equals(lastName, other.lastName);
+    }
 }

@@ -1,6 +1,8 @@
 package com.belhard.university;
 
-public class Employee extends Person {
+import java.util.Objects;
+
+abstract class Employee extends Person {
     private Integer experience;
     private Integer workingHours;
     private Integer salary;
@@ -50,9 +52,31 @@ public class Employee extends Person {
     }
 
     @Override
-    public String info() {
-        return getSecondName() + "\t" + getFirstName() + "\t" + getDateOfBrith() + "\t" + "Experience: "
-                + getExperience() + " years" + "\t" + "W.Hours: " + getWorkigHours() + "\t" + "Salary: " + getSalary()
-                + "BYN";
+    abstract public void introduceYourself();
+
+    @Override
+    public int hashCode() {
+        final int prime = 31;
+        int result = super.hashCode();
+        result = prime * result + Objects.hash(experience, workingHours, salary);
+        return result;
+    }
+
+    @Override
+    public boolean equals(Object obj) {
+        if (this == obj) {
+            return true;
+        }
+        if (!super.equals(obj)) {
+            return false;
+        }
+        if (getClass() != obj.getClass()) {
+            return false;
+        }
+        Employee other = (Employee) obj;
+        return salary == other.salary//
+                && workingHours == other.workingHours//
+                && experience == other.experience//
+                && super.equals(obj);
     }
 }
