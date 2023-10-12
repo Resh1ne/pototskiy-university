@@ -2,39 +2,44 @@ package com.belhard.university;
 
 import java.util.Objects;
 
+import com.belhard.university.util.DynamicArray;
+
 class Student extends Person {
     private String faculty;
     private String speciality;
     private double averageScore;
-    private Integer[] assessments = new Integer[10];
-    private int numberInGroups = 0;
+    private DynamicArray assessments = new DynamicArray();
+    private int numberInGroups = 1;
 
     Student(Long id, String firstName, String lastName, int day, int mounth, int year, String faculty,
             String speciality) {
         super(id, firstName, lastName, day, mounth, year);
         setFaculty(faculty);
         setSpeciality(speciality);
-        setAssessments();
         setAverageScore();
     }
 
-    private void setAssessments() {
-        for (int i = 0; i < assessments.length; i++) {
-            assessments[i] = ((int) (Math.random() * 11));
-        }
+    private void setAssessments(int assessment) {
+        assessments.add(assessment);
     }
 
-    public void getAssessments() {
-        for (int i = 0; i < assessments.length; i++) {
-            System.out.print(assessments[i] + "\t");
-        }
+    public int getAssessments(int index) {
+        return (int) assessments.get(index);
     }
 
     private void setAverageScore() {
         int counter = 0;
         double sum = 0;
-        for (int i = 0; i < assessments.length; i++) {
-            sum += assessments[i];
+        setAssessments((int) (Math.random() * 11));
+        setAssessments((int) (Math.random() * 11));
+        setAssessments((int) (Math.random() * 11));
+        setAssessments((int) (Math.random() * 11));
+        setAssessments((int) (Math.random() * 11));
+        setAssessments((int) (Math.random() * 11));
+        setAssessments((int) (Math.random() * 11));
+        setAssessments((int) (Math.random() * 11));
+        for (int i = 0; i < assessments.size(); i++) {
+            sum += (int) assessments.get(i);
             counter++;
         }
         averageScore = sum / counter;

@@ -32,7 +32,6 @@ public class App {
         fs.addStudent(student6);
 
         fs.info();
-
         teacher.introduceYourself();
         student1.introduceYourself();
         System.out.println("=================================================");
@@ -41,6 +40,7 @@ public class App {
         fs.removeStudent(student3);
         fs.removeStudent(student6);
         fs.info();
+
         System.out.println("=================================================");
 
         Student student7 = new Student(9L, "Sasha", "Orange", 15, 3, 2004, "FITU", "AA");
@@ -51,6 +51,7 @@ public class App {
         fs.addStudent(student7);
         fs.addStudent(student8);
         fs.info();
+
         System.out.println(fs.getSize());
     }
 }
