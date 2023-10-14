@@ -61,7 +61,7 @@ abstract class Person {
     public int hashCode() {
         return Objects.hash(id, dateOfBrith, firstName, lastName);
     }
-    
+
     @Override
     public boolean equals(Object obj) {
         if (this == obj) {

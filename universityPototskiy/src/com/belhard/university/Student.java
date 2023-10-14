@@ -8,7 +8,7 @@ class Student extends Person {
     private String faculty;
     private String speciality;
     private double averageScore;
-    private DynamicArray assessments = new DynamicArray();
+    private DynamicArray<Integer> assessments = new DynamicArray<Integer>();
     private int numberInGroups = 1;
 
     Student(Long id, String firstName, String lastName, int day, int mounth, int year, String faculty,

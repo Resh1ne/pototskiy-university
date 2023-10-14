@@ -2,7 +2,7 @@ package com.belhard.university.util;
 
 import java.util.Arrays;
 
-public class DynamicArray implements DataStructure {
+public class DynamicArray<T> implements DataStructure<T> {
     private Object[] arr = new Object[5];
     private int size = 0;
 
@@ -12,8 +12,8 @@ public class DynamicArray implements DataStructure {
     }
 
     @Override
-    public boolean add(Object obj) {
-        if(contains(obj)) {
+    public boolean add(T obj) {
+        if (contains(obj)) {
             return false;
         }
         if (size == arr.length) {
@@ -23,7 +23,7 @@ public class DynamicArray implements DataStructure {
         return true;
     }
 
-    public boolean remove(Object obj) {
+    public boolean remove(T obj) {
         Object[] newArr = Arrays.copyOf(arr, arr.length);
         int newIndex = 0;
         boolean alreadyThere = false;
@@ -61,5 +61,4 @@ public class DynamicArray implements DataStructure {
     public Object[] toArray() {
         return Arrays.copyOf(arr, size);
     }
-
 }

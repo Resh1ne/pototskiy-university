@@ -1,12 +1,12 @@
 package com.belhard.university.util;
 
-public class LinkedList implements DataStructure {
+public class LinkedList<T> implements DataStructure<T> {
 
     class Node {
         Node next;
-        Object data;
+        T data;
 
-        public Node(Object data) {
+        public Node(T data) {
             this.data = data;
             this.next = null;
         }
@@ -22,7 +22,7 @@ public class LinkedList implements DataStructure {
     }
 
     @Override
-    public boolean add(Object data) {
+    public boolean add(T data) {
         if (contains(data)) {
             return false;
         }

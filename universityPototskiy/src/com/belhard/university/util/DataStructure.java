@@ -1,9 +1,9 @@
 package com.belhard.university.util;
 
-interface DataStructure {
+interface DataStructure<T> {
     public int size();
 
-    public boolean add(Object obj);
+    public boolean add(T obj);
 
     public boolean contains(Object obj);
 

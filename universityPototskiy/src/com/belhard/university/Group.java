@@ -6,7 +6,7 @@ import com.belhard.university.util.DynamicArray;
 
 class Group {
     private Teacher teacher;
-    private DynamicArray students = new DynamicArray();
+    private DynamicArray<Student> students = new DynamicArray<Student>();
     private int countStudent = 0;
 
     Group(Teacher teacher, Student student) {
@@ -22,7 +22,6 @@ class Group {
         return teacher.toString();
     }
 
-    
     public void setStudent(Student student) {
         students.add(student);
         students.size();
@@ -52,7 +51,7 @@ class Group {
 
     public void getStudents() {
         checkNubmerInGrops();
-        for(int i = 0; i < students.size(); i++) {
+        for (int i = 0; i < students.size(); i++) {
             Student student = (Student) students.get(i);
             System.out.println(student.toString());
         }

@@ -15,9 +15,9 @@ public class App {
         System.out.println(student4.toString());
         Student student5 = new Student(5L, "Misha", "White", 30, 9, 2005, "FITU", "AA");
         System.out.println(student5.toString());
-        Student student6 = new Student(6L, "Temor", "Kurs", 5, 12, 2004, "FITU", "AA");        
+        Student student6 = new Student(6L, "Temor", "Kurs", 5, 12, 2004, "FITU", "AA");
         System.out.println(student6.toString());
-        
+
         Teacher teacher = new Teacher(7L, "Sam", "Teach", 1, 1, 1950, 1, 5, 6000);
         teacher.setSubjectTaught("matemathic");
         System.out.println(teacher.toString());
@@ -56,5 +56,26 @@ public class App {
         fs.info();
 
         System.out.println(fs.getSize());
+        System.out.println("=================================================");
+        System.out.println("=================================================");
+        System.out.println("=================================================");
+        LinkedList<Student> list = new LinkedList<Student>();
+        list.add(student1);
+        list.add(student2);
+        list.add(student3);
+        list.add(student4);
+        list.display();
+        
+        list.remove();
+        list.display();
+        list.remove();
+        list.display();
+        list.remove();
+        list.display();
+        list.remove();
+        list.display();
+        
+        list.removeStack();
+        System.out.println(list.size());
     }
 }
