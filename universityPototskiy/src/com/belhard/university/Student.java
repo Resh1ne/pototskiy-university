@@ -28,7 +28,6 @@ class Student extends Person {
     }
 
     private void setAverageScore() {
-        int counter = 0;
         double sum = 0;
         setAssessments((int) (Math.random() * 11));
         setAssessments((int) (Math.random() * 11));
@@ -40,9 +39,8 @@ class Student extends Person {
         setAssessments((int) (Math.random() * 11));
         for (int i = 0; i < assessments.size(); i++) {
             sum += (int) assessments.get(i);
-            counter++;
         }
-        averageScore = sum / counter;
+        averageScore = sum / assessments.size();
     }
 
     public int getNumberInGroups() {

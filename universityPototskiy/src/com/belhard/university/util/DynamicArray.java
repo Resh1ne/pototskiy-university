@@ -2,7 +2,7 @@ package com.belhard.university.util;
 
 import java.util.Arrays;
 
-public class DynamicArray implements InterfaceDynamicArray {
+public class DynamicArray implements DataStructure {
     private Object[] arr = new Object[5];
     private int size = 0;
 
@@ -13,20 +13,22 @@ public class DynamicArray implements InterfaceDynamicArray {
 
     @Override
     public boolean add(Object obj) {
-            if (size == arr.length) {
-                arr = Arrays.copyOf(arr, arr.length + 5);
-            }
-            arr[size++] = obj;
-            return true;
+        if(contains(obj)) {
+            return false;
+        }
+        if (size == arr.length) {
+            arr = Arrays.copyOf(arr, arr.length * 2);
+        }
+        arr[size++] = obj;
+        return true;
     }
 
-    @Override
     public boolean remove(Object obj) {
         Object[] newArr = Arrays.copyOf(arr, arr.length);
         int newIndex = 0;
         boolean alreadyThere = false;
-        for(int i = 0; i<arr.length; i++) {
-            if(!obj.equals(arr[i])) {
+        for (int i = 0; i < arr.length; i++) {
+            if (!obj.equals(arr[i])) {
                 newArr[newIndex] = arr[i];
                 newIndex++;
             } else {
@@ -40,8 +42,8 @@ public class DynamicArray implements InterfaceDynamicArray {
 
     @Override
     public boolean contains(Object obj) {
-        for(int i = 0; i<arr.length; i++) {
-            if(arr[i].equals(obj)) {
+        for (int i = 0; i < arr.length; i++) {
+            if (obj.equals(arr[i])) {
                 return true;
             }
         }
@@ -56,7 +58,6 @@ public class DynamicArray implements InterfaceDynamicArray {
         return arr[index];
     }
 
-    @Override
     public Object[] toArray() {
         return Arrays.copyOf(arr, size);
     }
